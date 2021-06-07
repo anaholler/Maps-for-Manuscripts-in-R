@@ -48,8 +48,7 @@ write.csv(out, file = "Adequabilidade_ayeaye.csv")
 #Para ver os pontos no mapa (simples)
 plot(ayeaye)
 points(coord_ayeaye$lon,coord_ayeaye$lat)
-
-extract(ayeaye, coord_ayeaye)
+extract(ayeaye, coord_ayeaye, buffer = 10000)
 
 #para ver o histograma
 hist(extract(ayeaye, coord_ayeaye))  
@@ -70,8 +69,8 @@ df$cat=as.factor(df$cat)
 ggplot(df, aes(x=adeq, color=cat, fill=cat)) +
   geom_histogram(aes(y=..density..), position="identity", alpha=0.5)+
   geom_density(alpha=0.6)+
-  scale_color_manual(values=c("#999999", "#E69F00"),labels = c("New records", "No data"))+
-  scale_fill_manual(values=c("#999999", "#E69F00"),labels = c("New records", "No data"))+
+  scale_color_manual(values=c("#E69F00", "#999999"),labels = c("New records", "No data"))+
+  scale_fill_manual(values=c("#E69F00", "#999999"),labels = c("New records", "No data"))+
   labs(x="Suitability", y = "Density")+
   theme(legend.title=element_blank(),
         panel.background = element_blank())
@@ -101,7 +100,7 @@ write.csv(out, file = "Adequabilidade_oreades.csv")
 plot(oreades)
 points(coord_oreades$lon,coord_oreades$lat)
 
-extract(oreades, coord_oreades)
+extract(oreades, coord_oreades, buffer = 10000)
 
 #para ver o histograma
 hist(extract(oreades, coord_oreades))  
@@ -122,8 +121,8 @@ df$cat=as.factor(df$cat)
 ggplot(df, aes(x=adeq, color=cat, fill=cat)) +
   geom_histogram(aes(y=..density..), position="identity", alpha=0.5)+
   geom_density(alpha=0.6)+
-  scale_color_manual(values=c("#999999", "#E69F00"),labels = c("New records", "No data"))+
-  scale_fill_manual(values=c("#999999", "#E69F00"),labels = c("New records", "No data"))+
+  scale_color_manual(values=c("#E69F00", "#999999"),labels = c("New records", "No data"))+
+  scale_fill_manual(values=c("#E69F00", "#999999"),labels = c("New records", "No data"))+
   labs(x="Suitability", y = "Density")+
   theme(legend.title=element_blank(),
         panel.background = element_blank())
